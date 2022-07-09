@@ -1,0 +1,1198 @@
+{
+	"info": {
+		"_postman_id": "cd30ecca-bbc7-4175-ba89-c36f6a6e5224",
+		"name": "PA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21798447"
+	},
+	"item": [
+		{
+			"name": "create-geofence",
+			"item": [
+				{
+					"name": "success",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJtYXJjb0BlbWFpbC5jb20ifQ.4_4tLHxlHZpSWjW85I7mt0CztaHYWXwR6k0F0j7HKk4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": \"geo4\",\r\n\"coordinates\": [\r\n          [\r\n            [\r\n              15.72763681411743,\r\n              41.69989708362879\r\n            ],\r\n            [\r\n              15.73362350463867,\r\n              41.701707447298666\r\n            ],\r\n            [\r\n              15.730662345886229,\r\n              41.70471926684249\r\n            ],\r\n            [\r\n              15.725598335266113,\r\n              41.704350807131654\r\n            ],\r\n            [\r\n              15.724890232086182,\r\n              41.70212398393942\r\n            ],\r\n            [\r\n              15.72763681411743,\r\n              41.69989708362879\r\n            ]\r\n          ]\r\n        ],\r\n\"max_speed\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/create-geofence",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"create-geofence"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user not admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJhbnRvbmlvQGVtYWlsLmNvbSJ9.a0KlvDkHJcvAp8WQttw1m3kSnL_fMddtjsEBE7Ue7Ng",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": \"geo5\",\r\n\"coordinates\":[\r\n          [\r\n            [\r\n              15.698175430297852,\r\n              41.70366194200839\r\n            ],\r\n            [\r\n              15.701351165771484,\r\n              41.699993210414604\r\n            ],\r\n            [\r\n              15.701415538787844,\r\n              41.70463916708497\r\n            ],\r\n            [\r\n              15.698797702789307,\r\n              41.705119764133286\r\n            ],\r\n            [\r\n              15.698175430297852,\r\n              41.70366194200839\r\n            ]\r\n          ]\r\n        ],\r\n\"max_speed\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/create-geofence",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"create-geofence"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user not found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJnaXVsaW9AZW1haWwuY29tIn0._LdFMr3YTTDqU4x7QgEuJvCQTwtXMH3mWqlG0h6yIl8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"id\": \"geo5\",\r\n\"coordinates\":[\r\n          [\r\n            [\r\n              15.698175430297852,\r\n              41.70366194200839\r\n            ],\r\n            [\r\n              15.701351165771484,\r\n              41.699993210414604\r\n            ],\r\n            [\r\n              15.701415538787844,\r\n              41.70463916708497\r\n            ],\r\n            [\r\n              15.698797702789307,\r\n              41.705119764133286\r\n            ],\r\n            [\r\n              15.698175430297852,\r\n              41.70366194200839\r\n            ]\r\n          ]\r\n        ],\r\n\"max_speed\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/create-geofence",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"create-geofence"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "create-vehicle",
+			"item": [
+				{
+					"name": "success",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJtYXJjb0BlbWFpbC5jb20ifQ.4_4tLHxlHZpSWjW85I7mt0CztaHYWXwR6k0F0j7HKk4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"license_plate\": \"TR4\",\r\n\"brand\": \"Toyota\",\r\n\"model\": \"RAV4\",\r\n\"owner_cf\": \"MHLCVR97\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/create-vehicle",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"create-vehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "no owner",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXFfZW1haWwiOiJtYXJjb0BlbWFpbC5jb20ifQ.ZYtaol2OjdXEb4ONho-5D5TWa_k0Th0JOI2jW143Eu8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"license_plate\": \"TR4\",\r\n\"brand\": \"Toyota\",\r\n\"model\": \"RAV4\",\r\n\"owner_cf\": \"JKLTHZ90\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/create-vehicle",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"create-vehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user not admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJhbnRvbmlvQGVtYWlsLmNvbSJ9.a0KlvDkHJcvAp8WQttw1m3kSnL_fMddtjsEBE7Ue7Ng",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"license_plate\": \"NQ\",\r\n\"brand\": \"Nissan\",\r\n\"model\": \"Qashqai\",\r\n\"owner_cf\": \"MHLCVR97\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/create-vehicle",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"create-vehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user not found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJnaXVsaW9AZW1haWwuY29tIn0._LdFMr3YTTDqU4x7QgEuJvCQTwtXMH3mWqlG0h6yIl8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"license_plate\": \"NJ\",\r\n\"brand\": \"Nissan\",\r\n\"model\": \"Juke\",\r\n\"owner_cf\": \"NTNMNC96\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/create-vehicle",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"create-vehicle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "create-geofences_vehicles",
+			"item": [
+				{
+					"name": "success",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJtYXJjb0BlbWFpbC5jb20ifQ.4_4tLHxlHZpSWjW85I7mt0CztaHYWXwR6k0F0j7HKk4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"geofences\": \"geo2,geo3\",\r\n    \"vehicles\": \"FF,OA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/create-geofences_vehicles",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"create-geofences_vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "geofence not found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJtYXJjb0BlbWFpbC5jb20ifQ.4_4tLHxlHZpSWjW85I7mt0CztaHYWXwR6k0F0j7HKk4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"geofences\": \"geo1,geo7\",\r\n    \"vehicles\": \"FF,OA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/create-geofences_vehicles",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"create-geofences_vehicles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vehicle not found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJtYXJjb0BlbWFpbC5jb20ifQ.4_4tLHxlHZpSWjW85I7mt0CztaHYWXwR6k0F0j7HKk4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"geofences\": \"geo1,geo2\",\r\n    \"vehicles\": \"YT,OA\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/create-geofences_vehicles",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"create-geofences_vehicles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "delete-geofence_vehicle",
+			"item": [
+				{
+					"name": "success",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJtYXJjb0BlbWFpbC5jb20ifQ.4_4tLHxlHZpSWjW85I7mt0CztaHYWXwR6k0F0j7HKk4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"geofence_id\":\"geo2\",\r\n    \"license_plate\":\"FF\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/delete-geofence_vehicle",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delete-geofence_vehicle"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "association geofence-vehicle not found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJtYXJjb0BlbWFpbC5jb20ifQ.4_4tLHxlHZpSWjW85I7mt0CztaHYWXwR6k0F0j7HKk4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"geofence_id\":\"geo3\",\r\n    \"license_plate\":\"OC\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/delete-geofence_vehicle",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"delete-geofence_vehicle"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "show-associations",
+			"item": [
+				{
+					"name": "success-admin",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6Im1hcmNvQGVtYWlsLmNvbSJ9.w7cMGRJE3vCnP7X0HiQoau9QQUFNM6Q6Dl8Auj5DhDc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/show-associations",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"show-associations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "success-user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFudG9uaW9AZW1haWwuY29tIn0.NTiVtiPo2dpR_K4Bxt3tE-grrYz6fBTJPmRPhHLeDn0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/show-associations",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"show-associations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user not found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImdpdWxpb0BlbWFpbC5jb20ifQ.nPvnUsCbhNsi4xB42cUw92nDjXYBzltUt6DYnt8fu2k",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/show-associations",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"show-associations"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "send-position",
+			"item": [
+				{
+					"name": "success-enter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudG9uaW9AZW1haWwuY29tIn0.QnRmbVXjT1lLZ6AKrMogRFRYfQmGCBrogJt0Zv55zH4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\":\"FP\",\r\n    \"longitude\":15.633673667907717,\r\n    \"latitude\":41.711703581962624,\r\n    \"altitude\":12,\r\n    \"speed\": 47\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/send-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"send-position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "success-inside",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudG9uaW9AZW1haWwuY29tIn0.QnRmbVXjT1lLZ6AKrMogRFRYfQmGCBrogJt0Zv55zH4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\":\"FP\",\r\n    \"longitude\":15.633448362350464,\r\n    \"latitude\":41.71123104328983,\r\n    \"altitude\":12,\r\n    \"speed\": 47\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/send-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"send-position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "success-inside",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudG9uaW9AZW1haWwuY29tIn0.QnRmbVXjT1lLZ6AKrMogRFRYfQmGCBrogJt0Zv55zH4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\":\"FP\",\r\n    \"longitude\":15.63276171684265,\r\n    \"latitude\":41.711575436225154,\r\n    \"altitude\":12,\r\n    \"speed\": 47\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/send-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"send-position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "success-exit_enter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudG9uaW9AZW1haWwuY29tIn0.QnRmbVXjT1lLZ6AKrMogRFRYfQmGCBrogJt0Zv55zH4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\":\"FP\",\r\n    \"longitude\":15.63878059387207,\r\n    \"latitude\":41.71325732870244,\r\n    \"altitude\":12,\r\n    \"speed\": 47\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/send-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"send-position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "success-inside",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudG9uaW9AZW1haWwuY29tIn0.QnRmbVXjT1lLZ6AKrMogRFRYfQmGCBrogJt0Zv55zH4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\":\"FP\",\r\n    \"longitude\":15.637857913970945,\r\n    \"latitude\":41.712824846268575,\r\n    \"altitude\":12,\r\n    \"speed\": 47\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/send-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"send-position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "success-out of geofence",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImFudG9uaW9AZW1haWwuY29tIn0.QnRmbVXjT1lLZ6AKrMogRFRYfQmGCBrogJt0Zv55zH4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\":\"FP\",\r\n    \"longitude\":15.634338855743408,\r\n    \"latitude\":41.71221616235796,\r\n    \"altitude\":12,\r\n    \"speed\": 47\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/send-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"send-position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "success-no associated geofences",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhcmlvQGVtYWlsLmNvbSJ9.P7A_zBVDJS_fkjXOM48M9QAFRBdjNXLkAfWVo-Tw4h0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\":\"AA8\",\r\n    \"longitude\":15.657234191894531,\r\n    \"latitude\":41.70460712715402,\r\n    \"altitude\":134,\r\n    \"speed\": 65\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/send-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"send-position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user-vehicle do not match",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRhcmlvQGVtYWlsLmNvbSJ9.P7A_zBVDJS_fkjXOM48M9QAFRBdjNXLkAfWVo-Tw4h0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\":\"FP\",\r\n    \"longitude\":15.637857913970946,\r\n    \"latitude\":41.712824846268576,\r\n    \"altitude\":20,\r\n    \"speed\": 52\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/send-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"send-position"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "show-vehicles",
+			"item": [
+				{
+					"name": "success-show_vehicles",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/show-vehicles",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"show-vehicles"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "show-positions",
+			"item": [
+				{
+					"name": "success-show_position",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\": \"P308\",\r\n    \"start\": \"2022-01-30\",\r\n    \"end\":\"2022-07-06\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/show-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"show-position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "success-show_position no end",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\": \"P308\",\r\n    \"start\": \"2022-01-30\",\r\n    \"end\":\"\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/show-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"show-position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "success-no points",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\": \"FF\",\r\n    \"start\": \"2022-06-30\",\r\n    \"end\":\"2022-07-06\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/show-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"show-position"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "vehicle not found",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"license_plate\": \"RT\",\r\n    \"start\": \"2022-06-30\",\r\n    \"end\":\"2022-07-06\"\r\n}"
+						},
+						"url": {
+							"raw": "localhost:3000/show-position",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"show-position"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "show-token",
+			"item": [
+				{
+					"name": "success",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6ImFudG9uaW9AZW1haWwuY29tIn0.NTiVtiPo2dpR_K4Bxt3tE-grrYz6fBTJPmRPhHLeDn0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/show-token",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"show-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user not found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyZXFfZW1haWwiOiJnaXVsaW9AZW1haWwuY29tIn0._LdFMr3YTTDqU4x7QgEuJvCQTwtXMH3mWqlG0h6yIl8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "localhost:3000/show-token",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"show-token"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "refill",
+			"item": [
+				{
+					"name": "success",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXFfZW1haWwiOiJtYXJjb0BlbWFpbC5jb20ifQ.ZYtaol2OjdXEb4ONho-5D5TWa_k0Th0JOI2jW143Eu8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"dario@email.com\",\r\n    \"token\":20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/refill",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"refill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin not found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXFfZW1haWwiOiJtYXJpb0BlbWFpbC5jb20ifQ.3npzlztsdib-vOC-yqYCdNKg3WvGGNtbLneewntUgZU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"dario@email.com\",\r\n    \"token\":20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/refill",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"refill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "user not found",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyZXFfZW1haWwiOiJtYXJjb0BlbWFpbC5jb20ifQ.ZYtaol2OjdXEb4ONho-5D5TWa_k0Th0JOI2jW143Eu8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"mario@email.com\",\r\n    \"token\":20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/refill",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"refill"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
