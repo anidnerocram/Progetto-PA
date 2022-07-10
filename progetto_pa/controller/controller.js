@@ -504,9 +504,9 @@ exports.deleteGeofenceVehicle = deleteGeofenceVehicle;
 /**
 *Funzione che permette inviare i dati instantanei di posizione, velocità e timestamp.
 *
-*Deve essere verificato se i dati di posizione inviati per quel veicolo rientrano all’interno di una geofence area: per farlo è stata utilizzata la query "queryContains"
+*Deve essere verificato se i dati di posizione inviati per quel veicolo rientrino all’interno di una geofence area: per farlo è stata utilizzata la query "queryContains"
 *
-*Nel caso in cui l’utente entra in una geo-fence area associata questo evento deve essere memorizzato.
+*Nel caso in cui l’utente entri in una geo-fence area associata questo evento deve essere memorizzato.
 *Stessa situazione per quanto riguarda l’uscita da una geo-fence area.
 *
 *Deve essere eventualmente verificato anche se la velocità all’interno della geo-fence area
@@ -552,8 +552,8 @@ function sendPosition(license_plate, longitude, latitude, altitude, speed, res, 
                             /*
                             *La seguente funzione verifica che il tipo dell'ultimo evento in ordine cronologico registrato del veicolo corrente
                             *sia un "Enter" (entrata nella geofence area) , un "Inside" (il veicolo si trova ancora all'interno della geofence area) o un "Exit" (uscita dalla geofence area).
-                            *--Se l'ultimo evento è di tipo "Enter" o "Inside" e la nuova geofence_id e quella già presente corrispondon allora:
-                            *si inserisce un nuovo evento "Enter" con la stessa geofence_id, mentre se non corrispondono si inseriscono due nuove righe:
+                            *--Se l'ultimo evento è di tipo "Enter" o "Inside" e il nuovo geofence_id e quello già presente corrispondono allora:
+                            *si inserisce un nuovo evento "Enter" con lo stesso geofence_id, mentre se non corrispondono si inseriscono due nuove righe:
                             *-la prima avrà come geofence_id quello già presente e come tipo "Exit" (quindi il veicolo è uscito dalla geofence area);
                             *-la seconda avrà come geofence_id quello nuovo e come tipo "Enter" (il veicolo è entrato in una nuova geofence area)
                             *--Se l'ultimo evento è di tipo "Exit" allora il veicolo sta entrando in una nuova geofence area e quindi
