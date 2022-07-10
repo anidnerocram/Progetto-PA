@@ -106,7 +106,7 @@ export function routeNotFound(req: any, res: any, next: any){
 }
 
 /**
-*Funzione utilizzata loggare gli errori
+*Funzione utilizzata per loggare gli errori
 * 
 *@param err -> errore
 *@param req -> richiesta del client
@@ -271,7 +271,7 @@ export function checkGeofenceArrayExist(req: any, res: any, next: any): void {
 }
 
 /**
-*Funzione che si occupa di controllare se l'associazione geofence area - veicolo nella richiesta esistano o meno
+*Funzione che si occupa di controllare se l'associazione geofence area - veicolo nella richiesta esista o meno
 * 
 *@param req -> richiesta del client
 *@param res -> risposta da parte del server
