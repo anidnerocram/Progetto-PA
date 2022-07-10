@@ -144,7 +144,7 @@ function routeNotFound(req, res, next) {
 }
 exports.routeNotFound = routeNotFound;
 /**
-*Funzione utilizzata loggare gli errori
+*Funzione utilizzata per loggare gli errori
 *
 *@param err -> errore
 *@param req -> richiesta del client
@@ -317,7 +317,7 @@ function checkGeofenceArrayExist(req, res, next) {
 }
 exports.checkGeofenceArrayExist = checkGeofenceArrayExist;
 /**
-*Funzione che si occupa di controllare se l'associazione geofence area - veicolo nella richiesta esistano o meno
+*Funzione che si occupa di controllare se l'associazione geofence area - veicolo nella richiesta esista o meno
 *
 *@param req -> richiesta del client
 *@param res -> risposta da parte del server
@@ -398,7 +398,7 @@ function checkRemainingTokenPosition(req, res, next) {
 }
 exports.checkRemainingTokenPosition = checkRemainingTokenPosition;
 /**
-*Funzione che si occupa di controllare se l'utente che effettua una richiesta è associato al veicolo.
+*Funzione che si occupa di controllare se l'utente che effettua una richiesta sia associato al veicolo.
 *
 *@param req -> richiesta del client
 *@param res -> risposta da parte del server
