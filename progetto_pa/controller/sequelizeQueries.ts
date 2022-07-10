@@ -82,7 +82,7 @@ export async function queryCheckContains(point: any) {
 }
 
 /**
-*Funzione che permette di restituire il timestamp dell'evento di tipo "Enter" del veicolo associato ad una specifica geofence_id
+*Funzione che permette di restituire il timestamp dell'evento di tipo "Enter" del veicolo associato ad uno specifico geofence_id
 * 
 *@param license_plate -> targa veicolo
 *@param geofence_id -> id geofence
