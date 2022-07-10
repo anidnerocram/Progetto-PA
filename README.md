@@ -2,20 +2,19 @@
 ## Obiettivo del progetto
 Il sistema back-end consente di gestire un insieme di veicoli che sono tracciati mediante localizzatore GPS. 
 In particolare, il sistema permette di effettuare chiamate per:
-* Creare delle geofence areas
+* Creare delle geofence area
 * Creare un veicolo
-* Associare una o più geo-fence areas ad uno o più veicoli
+* Associare una o più geofence area ad uno o più veicoli
 * Disassociare una geofence area ad un veicolo
-* Elencare le associazioni tra veicoli e geofence areas
+* Elencare le associazioni tra veicoli e geofence area
 * Inviare dati istantanei del veicolo
-* Elencare per ogni veicolo le geofence areas in cui si trova e il tempo di permanenza
+* Elencare per ogni veicolo le geofence area in cui si trova e il tempo di permanenza
 * Elencare le posizioni di un veicolo in un determinato intervallo temporale
 * Restituire il credito residuo di un utente
 * Ricaricare il credito di un utente
 
 
-Le chiamate vengono gestite tramite richieste HTTP(GET o POST) e in alcuni casi viene richiesta l'autenticazione tramite JWT
-vedere meglio c
+Le chiamate vengono gestite tramite richieste HTTP (GET o POST) e in alcuni casi viene richiesta l'autenticazione tramite JWT.
 ## Chiamate
 ### /create-geofence
 La richeista può essere eseguita solo da admin ed è necessaria l'autenticazione tramite JWT, in cui viene specificata l'email dell'admin.
