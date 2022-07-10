@@ -77,7 +77,6 @@ INSERT INTO vehicle (license_plate, brand, model, owner_cf) VALUES
   ('VG', 'Volkswagen', 'Golf', 'MHLCVR97'),
   ('FF', 'Ford', 'Fiesta', 'MHLCVR97');
 
-
 INSERT INTO geofence (id, coordinates, max_speed) VALUES 
   ('geo1', ST_Polygon('LINESTRING (15.637847185134886
               41.71252851403209,15.639231204986572
@@ -105,7 +104,6 @@ INSERT INTO geofence (id, coordinates, max_speed) VALUES
               41.71058229809793,15.635122060775757
               41.71152738150774,15.635111331939697
               41.711575436225154)', 0), 50);
-
 
 INSERT INTO geofence_vehicle (license_plate, geofence_id) VALUES
 ('FP', 'geo3'),
