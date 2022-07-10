@@ -345,7 +345,7 @@ export function checkRemainingTokenPosition(req: any, res: any, next: any): void
 }
 
 /**
-*Funzione che si occupa di controllare se l'utente che effettua una richiesta è associato al veicolo. 
+*Funzione che si occupa di controllare se l'utente che effettua una richiesta sia associato al veicolo. 
 * 
 *@param req -> richiesta del client
 *@param res -> risposta da parte del server
