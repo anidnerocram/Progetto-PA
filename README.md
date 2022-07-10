@@ -54,6 +54,8 @@ La geofence area viene rappresentata come un poligono in un file GEOJSON e per d
 "max_speed": 30
 }
 ```
+
+<img src = "progetto_pa/uml/Sequence diagram-createGeofence.png">
 ### /create-vehicle
 La richeista può essere eseguita solo da admin ed è necessaria l'autenticazione tramite JWT, in cui viene specificata l'email dell'admin.
 Viene gestita tramite richiesta POST. Nel body della richiesta vengono inserite le informazioni del veicolo. Tra queste anche
