@@ -15,6 +15,8 @@ In particolare, il sistema permette di effettuare chiamate per:
 
 
 Le chiamate vengono gestite tramite richieste HTTP (GET o POST) e in alcuni casi viene richiesta l'autenticazione tramite JWT.
+## Use case diagram
+![Use case diagram](https://user-images.githubusercontent.com/67785591/178142813-887db6fc-0384-41d6-b30b-06ebf18a582a.png)
 ## Rotte
 ### /create-geofence
 La richiesta può essere eseguita solo da admin ed è necessaria l'autenticazione tramite JWT, in cui viene specificata l'email dell'admin.
@@ -82,11 +84,11 @@ Viene gestita tramite richiesta POST. Nella richiesta possono essere inseriti pi
 ![Sequence diagram-creategeofencevehicles](https://user-images.githubusercontent.com/67785591/178141828-0ae61da5-7a4b-49d2-99e9-aa380d06435b.png)
 
 ### /delete-geofence_vehicle
-La richeista può essere eseguita solo da admin ed è necessaria l'autenticazione tramite JWT, in cui viene specificata l'email dell'admin.
+La richiesta può essere eseguita solo da admin ed è necessaria l'autenticazione tramite JWT, in cui viene specificata l'email dell'admin.
 Viene gestita tramite richiesta POST. Per eliminare un'associazione si inserisce l'id della geofence area e la license_plate del veicolo.
 ```json
 {
-    "geofence_id":"geo2",
+    "geofence_id":"geo1",
     "license_plate":"FF"
 }
 ```
@@ -95,7 +97,7 @@ Viene gestita tramite richiesta POST. Per eliminare un'associazione si inserisce
 
 ### /show-associations
 La richiesta può essere eseguita sia da un admin che da un utente ed è necessaria l'autenticazione tramite JWT, in cui viene specificata l'email.
-Viene gestita tramite richiesta POST. In particolare, l'adim ha la possibilità di ottenre l'elenco completo di tutte le associazioni,
+Viene gestita tramite richiesta POST. In particolare, l'admin ha la possibilità di ottenre l'elenco completo di tutte le associazioni,
 mentre l'utente può vedere solo il proprio insieme di veicoli e geofence area associate.
 
 
@@ -130,8 +132,8 @@ Ad ogni utente è associato un credito. Per ogni invio di dati deve essere scala
 
 ### /show-vehicles
 La richiesta può essere eseguita da un qualsiasi utente, pertanto non è richiesta l'autenticazione tramite JWT.
-Viene gestita tramite richiesta GET. Questa richiesta permette di ritornare per ogni veicolo se questo si trova all’interno o all’esterno di una geo-fence area. 
-Per i veicoli che sono all’interno della geo-fence area ritornare anche il tempo di permanenza.
+Viene gestita tramite richiesta GET. Questa richiesta permette di ritornare per ogni veicolo se questo si trova all’interno o all’esterno di una geofence area. 
+Per i veicoli che sono all’interno della geofence area ritornare anche il tempo di permanenza.
 
 
 ![Sequence diagram-showVehicles](https://user-images.githubusercontent.com/67785591/178142722-647f5175-a18e-4a9e-b1dd-3207dc3b5984.png)
@@ -160,10 +162,7 @@ Viene gestita tramite richiesta POST. Questa richiesta permette di ricaricare il
 ```
 ![Sequence diagram-refill](https://user-images.githubusercontent.com/67785591/178142776-8c911b72-2336-4b96-ad21-1538d9407fcc.png)
 
-## Use case diagram
-![Use case diagram](https://user-images.githubusercontent.com/67785591/178142813-887db6fc-0384-41d6-b30b-06ebf18a582a.png)
-
-## Pattern
+## Pattern utilizzati
 
 ### Singleton
 
@@ -188,7 +187,7 @@ Dopo aver clonato il repository sulla propria macchina e dopo aver avviato Docke
 * [Visual Studio Code](https://code.visualstudio.com/)
 * [Docker](https://www.docker.com/)
 * [Postman](https://www.postman.com/)
-### Librerie e Framework
+## Librerie e Framework
 * [NodeJs](https://nodejs.org/it/)
 * [Sequelize](https://sequelize.org/)
 * [Postgis](https://postgis.net/)
