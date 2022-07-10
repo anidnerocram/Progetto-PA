@@ -411,7 +411,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"geofence_id\":\"geo2\",\r\n    \"license_plate\":\"FF\"\r\n}",
+							"raw": "{\r\n    \"geofence_id\":\"geo1\",\r\n    \"license_plate\":\"FF\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
