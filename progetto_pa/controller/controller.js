@@ -504,9 +504,9 @@ exports.deleteGeofenceVehicle = deleteGeofenceVehicle;
 /**
 *Funzione che permette inviare i dati instantanei di posizione, velocità e timestamp.
 *
-*Deve essere verificato se i dati di posizione inviati per quel veicolo rientrino all’interno di una geofence area: per farlo è stata utilizzata la query "queryContains"
+*Deve essere verificato se i dati di posizione inviati per quel veicolo rientrano all’interno di una geofence area: per farlo è stata utilizzata la query "queryContains"
 *
-*Nel caso in cui l’utente entri in una geo-fence area associata questo evento deve essere memorizzato.
+*Nel caso in cui l’utente entra in una geo-fence area associata questo evento deve essere memorizzato.
 *Stessa situazione per quanto riguarda l’uscita da una geo-fence area.
 *
 *Deve essere eventualmente verificato anche se la velocità all’interno della geo-fence area
@@ -552,8 +552,8 @@ function sendPosition(license_plate, longitude, latitude, altitude, speed, res, 
                             /*
                             *La seguente funzione verifica che il tipo dell'ultimo evento in ordine cronologico registrato del veicolo corrente
                             *sia un "Enter" (entrata nella geofence area) , un "Inside" (il veicolo si trova ancora all'interno della geofence area) o un "Exit" (uscita dalla geofence area).
-                            *--Se l'ultimo evento è di tipo "Enter" o "Inside" e il nuovo geofence_id e quello già presente corrispondono allora:
-                            *si inserisce un nuovo evento "Enter" con lo stesso geofence_id, mentre se non corrispondono si inseriscono due nuove righe:
+                            *--Se l'ultimo evento è di tipo "Enter" o "Inside" e la nuova geofence_id e quella già presente corrispondon allora:
+                            *si inserisce un nuovo evento "Enter" con la stessa geofence_id, mentre se non corrispondono si inseriscono due nuove righe:
                             *-la prima avrà come geofence_id quello già presente e come tipo "Exit" (quindi il veicolo è uscito dalla geofence area);
                             *-la seconda avrà come geofence_id quello nuovo e come tipo "Enter" (il veicolo è entrato in una nuova geofence area)
                             *--Se l'ultimo evento è di tipo "Exit" allora il veicolo sta entrando in una nuova geofence area e quindi
@@ -700,7 +700,7 @@ exports.showPositions = showPositions;
 **/
 function showVehicles(req, res) {
     return __awaiter(this, void 0, void 0, function () {
-        var items, json, _i, items_2, item, point, geofence_id, timestamp_vehicle, a, b, c, error_12;
+        var items, json, _i, items_2, item, point, geofence_id, timestamp_vehicle, a, b, c, d, error_12;
         return __generator(this, function (_a) {
             switch (_a.label) {
                 case 0:
@@ -725,27 +725,36 @@ function showVehicles(req, res) {
                     return [4 /*yield*/, sequelizeQueries.queryTimestamp(item.license_plate, geofence_id[0][0].id)];
                 case 5:
                     timestamp_vehicle = _a.sent();
-                    a = JSON.parse(JSON.stringify({
-                        "license_plate": item.license_plate,
-                        "geofence_id": geofence_id[0][0].id,
-                        "tempo di permanenza": ((Date.now() - timestamp_vehicle[0][0].timestamp) / 60000).toFixed(2) + " min"
-                    }));
-                    json.push(a);
+                    if (timestamp_vehicle[0].length != 0) {
+                        a = JSON.parse(JSON.stringify({
+                            "license_plate": item.license_plate,
+                            "geofence_id": geofence_id[0][0].id,
+                            "tempo di permanenza": ((Date.now() - timestamp_vehicle[0][0].timestamp) / 60000).toFixed(2) + " min"
+                        }));
+                        json.push(a);
+                    }
+                    else {
+                        b = JSON.parse(JSON.stringify({
+                            "license_plate": item.license_plate,
+                            "geofence_id": ""
+                        }));
+                        json.push(b);
+                    }
                     return [3 /*break*/, 7];
                 case 6:
-                    b = JSON.parse(JSON.stringify({
-                        "license_plate": item.license_plate,
-                        "geofence_id": ""
-                    }));
-                    json.push(b);
-                    _a.label = 7;
-                case 7: return [3 /*break*/, 9];
-                case 8:
                     c = JSON.parse(JSON.stringify({
                         "license_plate": item.license_plate,
                         "geofence_id": ""
                     }));
                     json.push(c);
+                    _a.label = 7;
+                case 7: return [3 /*break*/, 9];
+                case 8:
+                    d = JSON.parse(JSON.stringify({
+                        "license_plate": item.license_plate,
+                        "geofence_id": ""
+                    }));
+                    json.push(d);
                     _a.label = 9;
                 case 9:
                     _i++;

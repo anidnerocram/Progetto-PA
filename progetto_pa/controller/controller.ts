@@ -1,6 +1,6 @@
 import { Users, Vehicle, Geofence, Geofence_Vehicle, sequelize, Position, Event } from '../model/model';
 const { Op } = require('sequelize');
-import { ErrorEnum, getError, Success} from '../factory/factory';
+import { ErrorEnum, getError, Success } from '../factory/factory';
 import * as sequelizeQueries from './sequelizeQueries'
 
 /**
@@ -91,7 +91,7 @@ export async function getOwnerCf(license_plate: string, res: any): Promise<strin
 export async function getToken(email: string, res: any): Promise<number> {
     let result: any;
     try {
-        result = await Users.findByPk(email, {raw:true});
+        result = await Users.findByPk(email, { raw: true });
     } catch (error) {
         controllerErrors(ErrorEnum.ErrServer, error, res);
     };
@@ -126,9 +126,9 @@ export async function getTokenCf(cf: string, res: any): Promise<number> {
 **/
 
 export function createVehicle(vehicle: any, res: any): void {
-    Vehicle.create(vehicle).then(()=>{
+    Vehicle.create(vehicle).then(() => {
         const new_res = new Success().getMsg();
-        res.status(new_res.status).json({status:new_res.status, message:new_res.msg});
+        res.status(new_res.status).json({ status: new_res.status, message: new_res.msg });
     })
         .catch((error) => {
             controllerErrors(ErrorEnum.ErrServer, error, res);
@@ -144,14 +144,14 @@ export function createVehicle(vehicle: any, res: any): void {
 **/
 
 export function createGeofence(geofence: any, res: any): void {
-    Geofence.create({id:geofence.id, coordinates:{ type: 'Polygon', coordinates: geofence.coordinates, crs: { type: 'name', properties: { name: 'EPSG:0'} }}, max_speed:geofence.max_speed})
-    .then(()=>{
-        const new_res = new Success().getMsg();
-        res.status(new_res.status).json({status:new_res.status, message:new_res.msg});
-    })
-    .catch((error) => {
-        controllerErrors(ErrorEnum.ErrServer, error, res);
-    })
+    Geofence.create({ id: geofence.id, coordinates: { type: 'Polygon', coordinates: geofence.coordinates, crs: { type: 'name', properties: { name: 'EPSG:0' } } }, max_speed: geofence.max_speed })
+        .then(() => {
+            const new_res = new Success().getMsg();
+            res.status(new_res.status).json({ status: new_res.status, message: new_res.msg });
+        })
+        .catch((error) => {
+            controllerErrors(ErrorEnum.ErrServer, error, res);
+        })
 }
 
 /** 
@@ -278,7 +278,7 @@ export function createGeofenceVehicle(geofences: string, vehicles: string, res: 
             }
         }
         const new_res = new Success().getMsg();
-        res.status(new_res.status).json({status:new_res.status, message:new_res.msg});      
+        res.status(new_res.status).json({ status: new_res.status, message: new_res.msg });
     }
     catch (error) {
         controllerErrors(ErrorEnum.ErrServer, error, res);
@@ -319,8 +319,8 @@ export async function checkAssociation(geofence_id: string, license_plate: strin
 export function deleteGeofenceVehicle(geofence_id: string, license_plate: string, res: any): void {
     try {
         Geofence_Vehicle.destroy({ where: { license_plate: license_plate, geofence_id: geofence_id } }).then(() => {
-        const new_res = new Success().getMsg();
-        res.status(new_res.status).json({status:new_res.status, message:new_res.msg}); 
+            const new_res = new Success().getMsg();
+            res.status(new_res.status).json({ status: new_res.status, message: new_res.msg });
         })
     }
     catch (error) {
@@ -331,13 +331,13 @@ export function deleteGeofenceVehicle(geofence_id: string, license_plate: string
 /** 
 *Funzione che permette inviare i dati instantanei di posizione, velocità e timestamp.
 *
-*Deve essere verificato se i dati di posizione inviati per quel veicolo rientrino all’interno di una geofence area: per farlo è stata utilizzata la query "queryContains"
+*Deve essere verificato se i dati di posizione inviati per quel veicolo rientrano all’interno di una geofence area: per farlo è stata utilizzata la query "queryContains"
 *
-*Nel caso in cui l’utente entri in una geo-fence area associata questo evento deve essere memorizzato. 
-*Stessa situazione per quanto riguarda l’uscita da una geofence area.
+*Nel caso in cui l’utente entra in una geo-fence area associata questo evento deve essere memorizzato. 
+*Stessa situazione per quanto riguarda l’uscita da una geo-fence area.
 *
-*Deve essere eventualmente verificato anche se la velocità all’interno della geofence area
-*sia superiore a quella consentita (la velocità massima all’interno della geofence area è opzionale).
+*Deve essere eventualmente verificato anche se la velocità all’interno della geo-fence area
+*è superiore a quella consentita (la velocità massima all’interno della geo-fence area è opzionale).
 *
 *@param license_plate -> targa veicolo
 *@param longitude -> longitudine veicolo
@@ -357,10 +357,10 @@ export function sendPosition(license_plate: string, longitude: number, latitude:
 
     sequelizeQueries.queryContains(longitude, latitude)
         .then((result) => {
-            if (result[0].length == 0) { 
-                                const new_res = new Success().getMsg();
-                                res.status(new_res.status).json({status:new_res.status, message:"The point is not present in any geofence", });
-                                }
+            if (result[0].length == 0) {
+                const new_res = new Success().getMsg();
+                res.status(new_res.status).json({ status: new_res.status, message: "The point is not present in any geofence", });
+            }
             else {
                 for (let element of result[0]) {
                     Geofence_Vehicle.findAll({ where: { license_plate: license_plate, geofence_id: element.id }, raw: true })
@@ -383,8 +383,8 @@ export function sendPosition(license_plate: string, longitude: number, latitude:
                                         /*
                                         *La seguente funzione verifica che il tipo dell'ultimo evento in ordine cronologico registrato del veicolo corrente
                                         *sia un "Enter" (entrata nella geofence area) , un "Inside" (il veicolo si trova ancora all'interno della geofence area) o un "Exit" (uscita dalla geofence area). 
-                                        *--Se l'ultimo evento è di tipo "Enter" o "Inside" e il nuovo geofence_id e quello già presente corrispondono allora: 
-                                        *si inserisce un nuovo evento "Enter" con lo stesso geofence_id, mentre se non corrispondono si inseriscono due nuove righe:
+                                        *--Se l'ultimo evento è di tipo "Enter" o "Inside" e la nuova geofence_id e quella già presente corrispondon allora: 
+                                        *si inserisce un nuovo evento "Enter" con la stessa geofence_id, mentre se non corrispondono si inseriscono due nuove righe:
                                         *-la prima avrà come geofence_id quello già presente e come tipo "Exit" (quindi il veicolo è uscito dalla geofence area);
                                         *-la seconda avrà come geofence_id quello nuovo e come tipo "Enter" (il veicolo è entrato in una nuova geofence area)
                                         *--Se l'ultimo evento è di tipo "Exit" allora il veicolo sta entrando in una nuova geofence area e quindi
@@ -397,29 +397,30 @@ export function sendPosition(license_plate: string, longitude: number, latitude:
                                                     if (result[0][0].geofence_id == element.id) {
                                                         Event.create({ license_plate: license_plate, geofence_id: element.id, timestamp: time, type: "Inside" })
                                                         const new_res = new Success().getMsg();
-                                                        res.status(new_res.status).json({status:new_res.status, message:new_res.msg});
+                                                        res.status(new_res.status).json({ status: new_res.status, message: new_res.msg });
                                                     } else {
-                                                        Event.create({ license_plate: license_plate, geofence_id: result[0][0].geofence_id, timestamp: time-1, type: "Exit" })
+                                                        Event.create({ license_plate: license_plate, geofence_id: result[0][0].geofence_id, timestamp: time - 1, type: "Exit" })
                                                         Event.create({ license_plate: license_plate, geofence_id: element.id, timestamp: time, type: "Enter" })
                                                         const new_res = new Success().getMsg();
-                                                        res.status(new_res.status).json({status:new_res.status, message:new_res.msg});
+                                                        res.status(new_res.status).json({ status: new_res.status, message: new_res.msg });
                                                     }
                                                 } else {
                                                     Event.create({ license_plate: license_plate, geofence_id: element.id, timestamp: time, type: "Enter" })
                                                     const new_res = new Success().getMsg();
-                                                    res.status(new_res.status).json({status:new_res.status, message:new_res.msg});
+                                                    res.status(new_res.status).json({ status: new_res.status, message: new_res.msg });
                                                 }
                                             })
                                         } else {
                                             Event.create({ license_plate: license_plate, geofence_id: element.id, timestamp: time, type: "Enter" })
                                             const new_res = new Success().getMsg();
-                                            res.status(new_res.status).json({status:new_res.status, message:new_res.msg});
+                                            res.status(new_res.status).json({ status: new_res.status, message: new_res.msg });
                                         }
-                                   }
+                                    }
                                     )
-                            } else { 
+                            } else {
                                 const new_res = new Success().getMsg();
-                                res.status(new_res.status).json({status:new_res.status, message:"No associated geofences", }); }
+                                res.status(new_res.status).json({ status: new_res.status, message: "No associated geofences", });
+                            }
                         })
                 }
             }
@@ -440,10 +441,10 @@ export function sendPosition(license_plate: string, longitude: number, latitude:
 
 export function refill(email: string, token: number, res: any): void {
     Users.update({ token: token }, { where: { email: email } })
-    .then(()=>{
-        const new_res = new Success().getMsg();
-        res.status(new_res.status).json({status:new_res.status, message:new_res.msg});
-    })
+        .then(() => {
+            const new_res = new Success().getMsg();
+            res.status(new_res.status).json({ status: new_res.status, message: new_res.msg });
+        })
         .catch((error) => {
             controllerErrors(ErrorEnum.ErrServer, error, res);
         })
@@ -459,7 +460,7 @@ export function refill(email: string, token: number, res: any): void {
 **/
 
 export function updateToken(email: string, res: any, next: any) {
-     getToken(email, res).then((token) => { Users.update({ token: token - 0.05 }, { where: { email: email }})}) 
+    getToken(email, res).then((token) => { Users.update({ token: token - 0.05 }, { where: { email: email } }) })
         .catch((error) => {
             controllerErrors(ErrorEnum.ErrServer, error, res);
         })
@@ -481,9 +482,9 @@ export function showPositions(license_plate: string, start: string, end: string,
     let newEnd: any;
 
     if (end == "") {
-        newEnd = Date.now()        
-    } else {newEnd = Math.floor(new Date(end).getTime())};
-    
+        newEnd = Date.now()
+    } else { newEnd = Math.floor(new Date(end).getTime()) };
+
     Position.findAll({ where: { vehicle_license_plate: license_plate, timestamp: { [Op.gt]: newStart, [Op.lt]: newEnd } }, raw: true })
         .then((items: any[]) => {
             let arrayPosition: any[] = [];
@@ -528,40 +529,48 @@ export function showPositions(license_plate: string, start: string, end: string,
 
 export async function showVehicles(req: any, res: any) {
     try {
-        let items: any[] = await Vehicle.findAll({ raw: true }) 
+        let items: any[] = await Vehicle.findAll({ raw: true })
         let json: any[] = [];
-        for (let item of items) {  
+        for (let item of items) {
             let point: any[] = await sequelizeQueries.queryPoint(item.license_plate);
-            if (point[0].length != 0) {  
+            if (point[0].length != 0) {
                 let geofence_id: any[] = await sequelizeQueries.queryCheckContains(point[0][0].point.coordinates)
                 if (geofence_id[0].length != 0) {
-                    let timestamp_vehicle: any[] = await sequelizeQueries.queryTimestamp(item.license_plate, geofence_id[0][0].id)                    
-                    let a = JSON.parse(JSON.stringify({
-                    "license_plate": item.license_plate,
-                    "geofence_id": geofence_id[0][0].id,
-                    "tempo di permanenza": ((Date.now() - timestamp_vehicle[0][0].timestamp) / 60000).toFixed(2) + " min"
-                }))  
-                json.push(a)
+                    let timestamp_vehicle: any[] = await sequelizeQueries.queryTimestamp(item.license_plate, geofence_id[0][0].id)
+                    if (timestamp_vehicle[0].length != 0) {
+                        let a = JSON.parse(JSON.stringify({
+                            "license_plate": item.license_plate,
+                            "geofence_id": geofence_id[0][0].id,
+                            "tempo di permanenza": ((Date.now() - timestamp_vehicle[0][0].timestamp) / 60000).toFixed(2) + " min"
+                        }))
+                        json.push(a)
+                    } else {
+                        let b = JSON.parse(JSON.stringify({
+                            "license_plate": item.license_plate,
+                            "geofence_id": ""
+                        }))
+                        json.push(b)
+                    }
                 } else {
-                    let b = JSON.parse(JSON.stringify({
+                    let c = JSON.parse(JSON.stringify({
                         "license_plate": item.license_plate,
                         "geofence_id": ""
                     }))
-                    json.push(b)
-                }                  
+                    json.push(c)
+                }
             } else {
-                let c = JSON.parse(JSON.stringify({
+                let d = JSON.parse(JSON.stringify({
                     "license_plate": item.license_plate,
                     "geofence_id": ""
                 }))
-                json.push(c)
+                json.push(d)
             }
         }
         res.send(json)
 
-    } catch (error){
+    } catch (error) {
         controllerErrors(ErrorEnum.ErrServer, error, res);
-    } 
+    }
 }
 
 
@@ -583,11 +592,11 @@ export async function showAssociations(req: any, res: any) {
                     ['license_plate', 'ASC']
                 ]
             })
-            res.send(all)    
-        } else {   
-            let cf: any = await Users.findByPk(req.bearer.email, { raw: true })   
+            res.send(all)
+        } else {
+            let cf: any = await Users.findByPk(req.bearer.email, { raw: true })
             let vehicles: any[] = await Vehicle.findAll({ where: { owner_cf: cf.cf }, raw: true })
-    
+
             for (const element of vehicles) {
                 let associations: any = await Geofence_Vehicle.findAll({ where: { license_plate: element.license_plate }, raw: true })
                 res.write(JSON.stringify(associations))
@@ -596,7 +605,7 @@ export async function showAssociations(req: any, res: any) {
         }
     } catch (error) {
         controllerErrors(ErrorEnum.ErrServer, error, res);
-    }  
+    }
 }
 
 /**
@@ -611,5 +620,5 @@ export async function showAssociations(req: any, res: any) {
 function controllerErrors(enum_error: ErrorEnum, err: Error, res: any): void {
     const new_err = getError(enum_error).getMsg();
     console.log(err);
-    res.status(new_err.status).json({error: new_err.status, message: new_err.msg});
+    res.status(new_err.status).json({ error: new_err.status, message: new_err.msg });
 }
